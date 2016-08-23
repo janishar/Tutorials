@@ -2,9 +2,14 @@ package test.mindorks.gallery.gallerytest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 
 import com.mindorks.placeholderview.PlaceHolderView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import test.mindorks.gallery.gallerytest.gallery.ImageTypeBig;
+import test.mindorks.gallery.gallerytest.gallery.ImageTypeSmallList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,15 +20,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
-        mGalleryView
-                .addView(new GalleryItem(getResources().getDrawable(R.drawable.img_1)))
-                .addView(new GalleryItem(getResources().getDrawable(R.drawable.img_2)))
-                .addView(new GalleryItem(getResources().getDrawable(R.drawable.img_3)))
-                .addView(new GalleryItem(getResources().getDrawable(R.drawable.img_4)))
-                .addView(new GalleryItem(getResources().getDrawable(R.drawable.img_5)))
-                .addView(new GalleryItem(getResources().getDrawable(R.drawable.img_6)))
-                .addView(new GalleryItem(getResources().getDrawable(R.drawable.img_7)))
-                .addView(new GalleryItem(getResources().getDrawable(R.drawable.img_8)))
-                .addView(new GalleryItem(getResources().getDrawable(R.drawable.img_9)));
+        setupGallery();
+    }
+
+    private void setupGallery(){
+
+        List<Image> imageList = Utils.loadImages(this.getApplicationContext());
+        List<Image> newImageList = new ArrayList<>();
+        for (int i = 0; i <  (imageList.size() > 10 ? 10 : imageList.size()); i++) {
+            newImageList.add(imageList.get(i));
+        }
+        mGalleryView.addView(new ImageTypeSmallList(this.getApplicationContext(), newImageList));
+
+        for (int i = imageList.size() - 1; i >= 0; i--) {
+            mGalleryView.addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, imageList.get(i).getImageUrl()));
+        }
     }
 }
