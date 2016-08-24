@@ -59,5 +59,4 @@ public class HeadingView {
     private void onCollapse(){
         toggleIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_up_white_24dp));
     }
-
 }
