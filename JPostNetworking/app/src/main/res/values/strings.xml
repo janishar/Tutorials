@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JPostNetworking</string>
+    <string name="repo_id">Repo ID: </string>
+    <string name="repo_name">Name: </string>
+    <string name="repo_url">Url: </string>
+    <string name="repo_size">Size: </string>
+</resources>
