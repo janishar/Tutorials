@@ -27,14 +27,16 @@ public class MainActivity extends AppCompatActivity {
         Point windowSize = Utils.getDisplaySize(getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
+                .setHeightSwipeDistFactor(10)
+                .setWidthSwipeDistFactor(5)
                 .setSwipeDecor(new SwipeDecor()
-                        .setViewWidth(windowSize.x)
-                        .setViewHeight(windowSize.y - bottomMargin)
-                        .setViewGravity(Gravity.TOP)
-                        .setPaddingTop(20)
-                        .setRelativeScale(0.01f)
-                        .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
-                        .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
+                .setViewWidth(windowSize.x)
+                .setViewHeight(windowSize.y - bottomMargin)
+                .setViewGravity(Gravity.TOP)
+                .setPaddingTop(20)
+                .setRelativeScale(0.01f)
+                .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
+                .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
 
 
         for(Profile profile : Utils.loadProfiles(this.getApplicationContext())){
