@@ -2,7 +2,6 @@ package test.mindorks.swipe.tinderswipe;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         mContext = getApplicationContext();
 
         int bottomMargin = Utils.dpToPx(160);
-        Point windowSize = Utils.getNavigationBarSize(getWindowManager());
+        Point windowSize = Utils.getDisplaySize(getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()

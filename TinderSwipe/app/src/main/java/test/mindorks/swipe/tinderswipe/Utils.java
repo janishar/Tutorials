@@ -63,7 +63,7 @@ public class Utils {
         return json;
     }
 
-    public static Point getNavigationBarSize(WindowManager windowManager){
+    public static Point getDisplaySize(WindowManager windowManager){
         try {
             if(Build.VERSION.SDK_INT > 16) {
                 Display display = windowManager.getDefaultDisplay();
