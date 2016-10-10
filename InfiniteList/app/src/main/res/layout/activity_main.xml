@@ -4,11 +4,9 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="ali.infinitelist.demo.infinitelist.MainActivity">
+    android:orientation="vertical">
     <com.mindorks.placeholderview.InfinitePlaceHolderView
         android:id="@+id/loadMoreView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello World!" />
+        android:layout_height="match_parent"/>
 </LinearLayout>
