@@ -50,21 +50,22 @@ public class RowListView {
 
     @Resolve
     public void onResolved(){
-        mainListView.getBuilder()
-                .setHasFixedSize(false)
-                .setLayoutManager(new StaggeredGridLayoutManager(
-                        listItemGoogleNewsMap.size()  > 0 ? listItemGoogleNewsMap.size() / 2 : 1,
-                        LinearLayoutManager.HORIZONTAL));
-
+        if(mainListView.getViewResolverCount() == 0) {
+            mainListView.getBuilder()
+                    .setHasFixedSize(false)
+                    .setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
+        }
         for(GridItemView gridItemView : listItemGoogleNewsMap.keySet()){
             switch (listItemGoogleNewsMap.get(gridItemView)){
                 case DO_NOTHING:
                     break;
                 case ADD_VIEW:
                     mainListView.addView(gridItemView);
+                    listItemGoogleNewsMap.put(gridItemView, DO_NOTHING);
                     break;
                 case UPDATE_VIEW:
                     mainListView.refreshView(gridItemView);
+                    listItemGoogleNewsMap.put(gridItemView, DO_NOTHING);
                     break;
             }
         }
