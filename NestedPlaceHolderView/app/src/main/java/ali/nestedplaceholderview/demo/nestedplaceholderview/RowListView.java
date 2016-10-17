@@ -22,7 +22,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by janisharali on 11/10/16.
@@ -37,14 +39,12 @@ public class RowListView {
     private final int DO_NOTHING = 0;
     private final int ADD_VIEW = 1;
     private final int UPDATE_VIEW = 2;
-
-    private HashMap<GridItemView, Integer> listItemGoogleNewsMap;
     private PlaceHolderView newsListView;
+    private List<GridItemView> gridItemViewList;
 
     public RowListView(PlaceHolderView newsListView) {
         this.newsListView = newsListView;
-
-        this.listItemGoogleNewsMap = new HashMap<>();
+        gridItemViewList = new ArrayList<>();
         new NetworkCall();
     }
 
@@ -55,17 +55,20 @@ public class RowListView {
                     .setHasFixedSize(false)
                     .setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
         }
-        for(GridItemView gridItemView : listItemGoogleNewsMap.keySet()){
-            switch (listItemGoogleNewsMap.get(gridItemView)){
+        for(GridItemView gridItemView : gridItemViewList){
+            switch (gridItemView.getState()){
                 case DO_NOTHING:
+                    if (mainListView.getViewResolverCount() < gridItemViewList.size()) {
+                        newsListView.addView(gridItemView);
+                    }
                     break;
                 case ADD_VIEW:
                     mainListView.addView(gridItemView);
-                    listItemGoogleNewsMap.put(gridItemView, DO_NOTHING);
+                    gridItemView.setState(DO_NOTHING);
                     break;
                 case UPDATE_VIEW:
                     mainListView.refreshView(gridItemView);
-                    listItemGoogleNewsMap.put(gridItemView, DO_NOTHING);
+                    gridItemView.setState(DO_NOTHING);
                     break;
             }
         }
@@ -108,7 +111,7 @@ public class RowListView {
                         @Override
                         public void run() {
                             for(GoogleNews.entry entry : googleNews.getResponse().getFeedData().getEntryList()){
-                                listItemGoogleNewsMap.put(new GridItemView(entry), ADD_VIEW);
+                                gridItemViewList.add(new GridItemView(entry, ADD_VIEW));
                             }
                             newsListView.refreshView(RowListView.this);
                         }

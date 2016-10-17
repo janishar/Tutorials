@@ -69,6 +69,7 @@ public class RowListView2 {
                     break;
             }
         }
+        mainListView.refresh();
     }
 
     private class NetworkCall implements Runnable{

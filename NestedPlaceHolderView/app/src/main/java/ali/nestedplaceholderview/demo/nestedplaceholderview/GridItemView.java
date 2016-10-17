@@ -24,10 +24,21 @@ public class GridItemView {
     @View(R.id.newsTxt)
     private TextView newsTxt;
 
+    private int state;
+
     private GoogleNews.entry googleNewsEntry;
 
-    public GridItemView(GoogleNews.entry googleNewsEntry) {
+    public GridItemView(GoogleNews.entry googleNewsEntry, int state) {
         this.googleNewsEntry = googleNewsEntry;
+        this.state = state;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     @Resolve
