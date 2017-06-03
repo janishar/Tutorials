@@ -18,6 +18,8 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 /**
  * Created by janisharali on 19/08/16.
  */
@@ -45,7 +47,10 @@ public class TinderCard {
 
     @Resolve
     private void onResolved(){
-        Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
+        Glide.with(mContext).load(mProfile.getImageUrl())
+                .bitmapTransform(new RoundedCornersTransformation(mContext, Utils.dpToPx(7), 0,
+                        RoundedCornersTransformation.CornerType.TOP))
+                .into(profileImageView);
         nameAgeTxt.setText(mProfile.getName() + ", " + mProfile.getAge());
         locationNameTxt.setText(mProfile.getLocation());
     }

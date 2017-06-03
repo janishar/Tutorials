@@ -12,10 +12,11 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         app:cardCornerRadius="7dp"
+        app:cardPreventCornerOverlap="false"
         app:cardElevation="4dp">
         <ImageView
             android:id="@+id/profileImageView"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="75dp"/>
