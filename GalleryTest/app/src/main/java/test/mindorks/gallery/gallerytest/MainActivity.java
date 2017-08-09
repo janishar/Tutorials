@@ -2,6 +2,7 @@ package test.mindorks.gallery.gallerytest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.mindorks.placeholderview.PlaceHolderView;
 
@@ -35,5 +36,12 @@ public class MainActivity extends AppCompatActivity {
         for (int i = imageList.size() - 1; i >= 0; i--) {
             mGalleryView.addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, imageList.get(i).getImageUrl()));
         }
+
+        findViewById(R.id.remove).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGalleryView.removeAllViews();
+            }
+        });
     }
 }
