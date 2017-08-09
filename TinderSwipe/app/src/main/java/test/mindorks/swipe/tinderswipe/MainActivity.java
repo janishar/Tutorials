@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Point windowSize = Utils.getDisplaySize(getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
+                .setIsUndoEnabled(true)
                 .setHeightSwipeDistFactor(10)
                 .setWidthSwipeDistFactor(5)
                 .setSwipeDecor(new SwipeDecor()
@@ -54,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mSwipeView.doSwipe(true);
+            }
+        });
+
+        findViewById(R.id.undoBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSwipeView.undoLastSwipe();
             }
         });
     }
