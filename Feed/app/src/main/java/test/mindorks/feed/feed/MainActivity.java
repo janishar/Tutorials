@@ -1,14 +1,12 @@
 package test.mindorks.feed.feed;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 
 import com.mindorks.placeholderview.ExpandablePlaceHolderView;
 import com.mindorks.placeholderview.PlaceHolderView;
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 mExpandableView.addView(new InfoView(mContext, info));
             }
         }
-        setLoadMoreListener(mExpandableView);
+//        setLoadMoreListener(mExpandableView);
     }
 
     private void setLoadMoreListener(ExpandablePlaceHolderView expandableView) {
