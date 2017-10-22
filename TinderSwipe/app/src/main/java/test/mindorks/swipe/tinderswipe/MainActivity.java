@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                         .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
                         .setRelativeScale(0.01f)
+                        .setSwipeMaxChangeAngle(2f)
                 .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                 .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
 
