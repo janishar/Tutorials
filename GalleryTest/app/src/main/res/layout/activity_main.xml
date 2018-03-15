@@ -7,7 +7,8 @@
         android:id="@+id/remove"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remove"/>
+        android:text="Remove"
+        android:visibility="gone"/>
     <com.mindorks.placeholderview.PlaceHolderView
         android:id="@+id/galleryView"
         android:layout_width="match_parent"

@@ -18,7 +18,6 @@ import test.mindorks.gallery.gallerytest.R;
 /**
  * Created by janisharali on 19/08/16.
  */
-@Animate(Animation.ENTER_LEFT_DESC)
 @NonReusable
 @Layout(R.layout.gallery_item_big)
 public class ImageTypeBig {

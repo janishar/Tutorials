@@ -1,7 +1,7 @@
 package test.mindorks.gallery.gallerytest;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mindorks.placeholderview.PlaceHolderView;
@@ -22,6 +22,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
         setupGallery();
+
+        findViewById(R.id.remove).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGalleryView.removeAllViews();
+            }
+        });
     }
 
     private void setupGallery(){
@@ -31,17 +38,14 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i <  (imageList.size() > 10 ? 10 : imageList.size()); i++) {
             newImageList.add(imageList.get(i));
         }
+
         mGalleryView.addView(new ImageTypeSmallList(this.getApplicationContext(), newImageList));
+
+        // Not recycler the sub lists
+        mGalleryView.getRecycledViewPool().setMaxRecycledViews(R.layout.gallery_item_small_list, 0);
 
         for (int i = imageList.size() - 1; i >= 0; i--) {
             mGalleryView.addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, imageList.get(i).getImageUrl()));
         }
-
-        findViewById(R.id.remove).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mGalleryView.removeAllViews();
-            }
-        });
     }
 }
