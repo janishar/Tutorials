@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "dependency.greendao.test.tinder.directional"
         minSdkVersion 16
@@ -34,8 +34,8 @@ dependencies {
     // default 25.4.1 RecyclerView dependency stated by placeholderview
     // since we are using the 27.+ support libraries in the project
     compile 'com.android.support:recyclerview-v7:27.1.0'
-    compile 'com.mindorks.android:placeholderview:1.0.0'
-    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.0'
+    compile 'com.mindorks.android:placeholderview:1.0.1'
+    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.1'
 
     compile 'jp.wasabeef:glide-transformations:2.0.2'
 }
