@@ -34,8 +34,8 @@ dependencies {
     // default 25.4.1 RecyclerView dependency stated by placeholderview
     // since we are using the 27.+ support libraries in the project
     compile 'com.android.support:recyclerview-v7:27.1.0'
-    compile 'com.mindorks.android:placeholderview:1.0.1'
-    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.1'
+    compile 'com.mindorks.android:placeholderview:1.0.2'
+    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.2'
 
     compile 'jp.wasabeef:glide-transformations:2.0.2'
 }
