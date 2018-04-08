@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "kotlin.tinderswipe.swipe.mindorks.demo"
+        applicationId "tinderswipe.swipe.mindorks.demo"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
@@ -30,4 +29,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    implementation 'com.android.support:cardview-v7:27.1.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+    // RecyclerView dependency is added to override the
+    // default 25.4.1 RecyclerView dependency stated by placeholderview
+    // since we are using the 27.+ support libraries in the project
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
+    implementation 'com.mindorks.android:placeholderview:1.0.2'
+    kapt 'com.mindorks.android:placeholderview-compiler:1.0.2'
+
+    implementation 'jp.wasabeef:glide-transformations:2.0.2'
 }
